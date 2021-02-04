@@ -1,0 +1,237 @@
+---
+title:
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: scroll
+    css: css/prueba.css
+    social: [ "twitter",  "menu" ]
+    navbar:
+      - { title: "home", icon: "fa-home", href: "https://javenda.me/", align: left }
+    
+    
+---
+
+
+
+
+```{r setup, include=FALSE}
+#title: "Datos COVID 19 Venezuela"
+library(shinydashboard)
+#library(shinyjs)
+library(plotly)
+library(highcharter)
+library(flexdashboard)
+library(emo)
+library(stringr)
+library(DT)
+#library(ggplot2)
+#htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+source('high_charter_options.R')
+source('0_carga_datos.R')
+source('1_generacion_graficosR.R')
+my_title <- paste0('  Datos COVID 19 Venezuela ',emo::ji("venezuela"),'               ')
+
+```
+---
+title: '`r my_title`'
+
+---
+
+<script>
+document.querySelector(".navbar-header > span.navbar-brand").innerHTML = "`r my_title`";
+</script> 
+
+<br>
+
+
+Gráficos
+===================================== 
+
+
+Row
+-----------------------------------------------------------------------
+### Contagiados
+```{r}
+valor1 <- str_replace_all(formatC(df1[dim(df1)[1],3], format="f", big.mark=",", digits=0),',','.')
+valueBox(valor1, icon = 'fa-ambulance', color= '#d62828')
+
+```
+
+### Fallecidos
+```{r}
+valor2 <- stringr::str_replace_all(formatC(df1[dim(df1)[1],7], format="f", big.mark=",", digits=0),',','.')
+valueBox(valor2,  icon= "fa-arrow-alt-circle-down", color= '#4a4e69')#"f"fa-thumbs-down
+```
+
+### Recuperados
+```{r}
+valor3 <- str_replace_all(formatC(df1[dim(df1)[1],5], format="f", big.mark=",", digits=0),',','.')
+valueBox(valor3,  icon = "fa-thumbs-up", color='#0077b6') #icon("", lib = "glyphicon"))#icon = "fa-download")
+```
+
+### Datos hasta
+
+```{r}
+#color = "yellow")
+valor4 <- disponible
+valueBox(valor4,  icon = "glyphicon-ok", color= 'green') #icon("ok", lib = "glyphicon"))#"fa-download")
+
+
+```
+
+
+
+Row
+-------------------------------------
+### Datos
+```{r}
+todos
+```
+
+Row
+-------------------------------------
+    
+### Contagiados (acumulados)
+
+```{r}
+fig6
+
+
+```
+
+    
+### Contagiados nuevos por día
+
+```{r}
+fig3
+
+
+```
+
+Row
+-------------------------------------
+    
+### Fallecidos (acumulados)
+    
+```{r}
+
+fig8
+
+```
+    
+### Fallecidos nuevos por día
+
+```{r}
+fig2
+
+```
+
+Row
+-------------------------------------
+    
+### Recuperados (acumulados)
+    
+```{r}
+fig7
+
+```
+    
+### Recuperados nuevos por día
+
+```{r}
+fig4
+```
+
+Row {data-height=500}
+-------------------------------------
+    
+### Activos por día
+    
+```{r}
+
+fig5
+
+```
+    
+### Distribución por edades
+
+```{r}
+edades
+
+
+
+```
+
+Row{data-height=650}
+-------------------------------------
+    
+### Contagios nuevos por estado
+```{r}
+nuevos_estados
+
+
+
+
+```
+
+### Contagios acumulados por estado
+```{r}
+fig9
+
+```
+Row
+-------------------------------------
+
+### Acerca:
+toda la información y datos son obtenidos de la página https://covid19.patria.org.ve/estadisticas-venezuela/ y 
+han sido procesados  y acumulados por José Miguel Avendaño I, sin modificar ni añadir ningún valor adicional.
+
+Este sitio funciona como complemento y ofrece visualizaciones parecidas o adicionales a las
+ya mostradas en dicha página. No se contempla con los datos contenidos acá realizar
+proyecciones o estimaciones sobre el avance del COVID 19 en Venezuela.
+
+La calidad de los datos se asume en que son los oficiales. La actualización de esta página queda sujeta a 
+que la información sea actualizada en la fuente de datos señalada.
+
+Esta página está en su version beta y cualquier falla o discrepancia con los datos 
+originales se agradece informarla a la dirección de correo javenda@gmail.com
+
+
+tabla de datos
+===================================== 
+Row
+-------------------------------------
+
+
+### Datos históricos
+
+```{r}
+tabla_df1 <- df1%>%
+  mutate(fecha=as.character(df1$fecha, "%d/%m/%Y"))
+
+DT::datatable(tabla_df1,options = list(pageLength = 25,autoWidth = TRUE,sDom  = '<"top">lrt<"bottom">ip'),
+              class = 'cell-border stripe',
+              rownames = FALSE,
+               colnames = c('fecha', 'casos activos', 'casos acumulados', 'casos nuevos', 'recuperados acumulados','recuperados nuevos', 'fallecidos acumulados','fallecidos nuevos'),
+              caption = 'datos oficiales Covid 19 - Venezuela' )
+
+# filter = 'top'
+```
+Row
+-------------------------------------
+
+### descarga de los datos
+Si desea descargar los datos con los cuales se generaron estos gráficos usar los enlaces:
+
+https://github.com/javendaXgh/app_covid_ven/raw/main/data/datos_historicos.xls
+
+https://github.com/javendaXgh/app_covid_ven/raw/main/data/historico_estados.xls
+
+Los archivos fueron generados con los datos disponibles en la API de covid19.patria.org.ve
+
+https://covid19.patria.org.ve/estadisticas-venezuela/
+
+https://covid19.patria.org.ve/api/v1/summary
+
+https://covid19.patria.org.ve/api/v1/timeline

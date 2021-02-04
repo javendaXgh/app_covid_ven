@@ -1,0 +1,13 @@
+name: covid_ven
+title: covid_ven
+username:
+account: javenda
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3521416
+bundleId: 4155005
+url: https://javenda.shinyapps.io/covid_ven/
+when: 1611864826.79626
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: actualizacion.R|df_2_20200121.rds|df1.rds|fecha_vieja.rds|graficos.R|iniciar_variables.R|README.md|venezuelaHigh.svg|venezuelaLow.svg|bd
