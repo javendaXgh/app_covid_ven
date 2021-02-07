@@ -24,3 +24,5 @@ high_charter_options.R
 historico_estados.xls
 iniciar_variables.R
 procesamiento_historico_estados.R
+.gitnore
+0_carga_datos.R
