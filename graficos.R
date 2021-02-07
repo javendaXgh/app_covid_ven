@@ -12,6 +12,7 @@ propuesta <- df1 %>%
 
 
 
+
 #######
 
 ggplot(df_grafico_genero, aes(x=sexo, y=valores, fill=sexo,label =valores )) +  

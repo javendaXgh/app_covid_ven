@@ -88,3 +88,4 @@ edades <- plot_ly(df_grafico_edades, x = ~grupo, y = ~valor, type = 'bar', color
              color = 'rgb(107, 107, 107)')),
          barmode = 'group', bargap = 0.15, bargroupgap = 0.1)
 
+
