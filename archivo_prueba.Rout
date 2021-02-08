@@ -165,3 +165,20 @@ Type 'q()' to quit R.
 > # Add and commit changes. 
 > gitadd()
 sh: /u: No such file or directory
+> gitcommit()
+[main d2f063e] commit from Rstudio
+ 1 file changed, 167 insertions(+)
+ create mode 100644 archivo_prueba.Rout
+> 
+> # Push changes to github.
+> gitpush()
+sh: /u: No such file or directory
+To github.com:javendaXgh/app_covid_ven.git
+   303accc..d2f063e  main -> main
+> 
+> 
+> 
+> 
+> proc.time()
+   user  system elapsed 
+  0.907   0.200   6.231 

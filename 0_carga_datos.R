@@ -15,14 +15,14 @@ originales se agradece informarla a la dirección de correo javenda@gmail.com
 
 
 
-df1 <- readRDS('data/df1.rds')
-df_gr_estados <- readRDS('data/df_gr_estados.rds')
-df1_tiddy <- readRDS('data/df1_tiddy.rds')
-fecha_nueva <- readRDS('data/fecha_nueva.rds')
+df1 <- readRDS('/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/data/df1.rds')
+df_gr_estados <- readRDS('/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/data/df_gr_estados.rds')
+df1_tiddy <- readRDS('/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/data/df1_tiddy.rds')
+fecha_nueva <- readRDS('/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/data/fecha_nueva.rds')
 #actualizacion <- readRDS('data/fecha_actualizacion.rds')
 #print(actualizacion)
-df_grafico_edades <- readRDS('data/df_grafico_edades.rds')
-actualizacion <- readRDS('data/fecha_actualizacion.rds')%>%
+df_grafico_edades <- readRDS('/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/data/df_grafico_edades.rds')
+actualizacion <- readRDS('/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/data/fecha_actualizacion.rds')%>%
   format.Date(.,'%d/%m/%Y')
 disponible <- max(df1$fecha)%>%
   format.Date(.,'%d/%m/%Y')

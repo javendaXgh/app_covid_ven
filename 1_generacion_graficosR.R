@@ -20,7 +20,7 @@ todos <- plot_ly(df1_tiddy, x = ~fecha, y = ~valor,  mode = 'lines',  hoverinfo=
              color = 'rgb(107, 107, 107)')))%>%
   layout(legend = list(orientation = "h",   # show entries horizontally
                        xanchor = "center",  # use center of legend as anchor
-                       x = .5,y=-.2))     
+                       x = .5,y=-.2))   
 
 
 

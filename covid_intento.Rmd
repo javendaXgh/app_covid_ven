@@ -27,9 +27,9 @@ library(stringr)
 library(DT)
 #library(ggplot2)
 #htmltools::tagList(rmarkdown::html_dependency_font_awesome())
-source('high_charter_options.R')
-source('0_carga_datos.R')
-source('1_generacion_graficosR.R')
+source('/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/high_charter_options.R')
+source('/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/0_carga_datos.R')
+source('/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/1_generacion_graficosR.R')
 my_title <- paste0('  Datos COVID 19 Venezuela ',emo::ji("venezuela"),'               ')
 
 ```

@@ -15,7 +15,7 @@ df1 <- jsonlite::fromJSON('https://covid19.patria.org.ve/api/v1/timeline')%>%
 #####################df2
 
 #f2 <- jsonlite::fromJSON('https://covid19.patria.org.ve/api/v1/summary')
-df2 <- readRDS('df_2_20200121.rds')
+df2 <- readRDS('/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/df_2_20200121.rds')
 fecha_nueva <- df1[dim(df1)[1],1]-1
 ###nombres  data.frames
 names_grupo_edad <- names(unlist(df2[[1]][2]))%>%
