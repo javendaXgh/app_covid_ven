@@ -5,7 +5,7 @@ names2 <- c('fecha','activos', 'confirmados (acumulados)', 'confirmados nuevos',
             'recuperados (acumulados)','recuperados nuevos', 'fallecidos (acumulados)', 
             'fallecidos nuevos')
 
-df2 <- readRDS('df_2_20200121.rds')
+df2 <- readRDS('/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/df_2_20200121.rds')
 ###nombres  data.frames
 names_grupo_edad <- names(unlist(df2[[1]][2]))%>%
   substr(.,12,nchar(.))%>%

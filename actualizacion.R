@@ -17,7 +17,7 @@ actualizacion <- function(){
     df1_actualizada <- df1
     fecha_nueva <- df1[dim(df1)[1],1]
     fecha_actualizacion <- Sys.Date()
-    fecha_vieja <- readRDS('fecha_vieja.rds')
+    fecha_vieja <- readRDS('/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/fecha_vieja.rds')
     
     if(fecha_vieja<fecha_nueva){
       df1_tiddy <- df1%>%
@@ -100,7 +100,7 @@ actualizacion <- function(){
       
     }
   }
-  rmarkdown::render('covid_intento.RMD') 
+  rmarkdown::render('/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/covid_intento.RMD') 
   file.copy(
     'covid_intento.html','/Users/josemiguelavendanoinfante/R/sites/javenda_site/static/covid19venezuela.html', 
     overwrite = TRUE)
