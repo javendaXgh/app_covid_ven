@@ -102,7 +102,7 @@ actualizacion <- function(){
   }
   rmarkdown::render('/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/covid_intento.RMD') 
   file.copy(
-    'covid_intento.html','/Users/josemiguelavendanoinfante/R/sites/javenda_site/static/covid19venezuela.html', 
+    'covid_intento.html','/Users/josemiguelavendanoinfante/R/javenda_site/static/covid19venezuela.html', 
     overwrite = TRUE)
   system('git config user.email "javenda@gmail.com"')
   system('git config user.name "javendaXgh"')
