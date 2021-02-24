@@ -32,13 +32,17 @@ actualizacion <- function(){
           values_drop_na = TRUE)
       
       fecha_vieja <- fecha_nueva
+      Sys.setenv(RSTUDIO_PANDOC='/Applications/RStudio.app/Contents/MacOS/pandoc')
+      rmarkdown::render('/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/covid_intento.RMD') 
       saveRDS(df1_actualizada, paste0('/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/bd/df1/df1_',fecha_nueva,'.rds'))
       saveRDS(df1,'/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/data/df1.rds')
       saveRDS(df1_tiddy,'/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/data/df1_tiddy.rds')
       saveRDS(fecha_nueva,'/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/fecha_vieja.rds')
       saveRDS(fecha_actualizacion,'/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/data/fecha_actualizacion.rds')
       saveRDS(fecha_nueva,'/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/data/fecha_nueva.rds')
-      xlsx::write.xlsx(df1, '/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/data/datos_historicos.xls')
+      xlsx::write.xlsx(df1, '/Users/josemiguelavendanoinfante/R/javenda_site/static/data/datos_historicos.xls')
+      file.copy('/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/covid_intento.html','/Users/josemiguelavendanoinfante/R/javenda_site/static/covid19venezuela.html', 
+                overwrite = TRUE)
       
       
       df2 <- jsonlite::fromJSON('https://covid19.patria.org.ve/api/v1/summary')
@@ -82,6 +86,10 @@ actualizacion <- function(){
                                           valor=as.numeric(df_gr_edades[dim(df_gr_edades)[1],2:11]))
           df_grafico_genero <- data.frame(sexo=c('masculino','femenino'), 
                                           valores=as.numeric(df_genero[dim(df_genero)[1],2:3]))
+          Sys.setenv(RSTUDIO_PANDOC='/Applications/RStudio.app/Contents/MacOS/pandoc')
+          rmarkdown::render('/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/covid_intento.RMD') 
+          file.copy('/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/covid_intento.html','/Users/josemiguelavendanoinfante/R/javenda_site/static/covid19venezuela.html', 
+                    overwrite = TRUE)
           
           saveRDS(df_estados,paste0('/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/bd/estados/df_estados_',fecha_nueva,'.rds'))
           saveRDS(df_estados,paste0('/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/data/df_estados.rds'))
@@ -93,35 +101,19 @@ actualizacion <- function(){
           saveRDS(df2,paste0('/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/bd/df2/df2_',fecha_nueva,'.rds'))
           saveRDS(df_gr_estados,'/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/data/df_gr_estados.rds')
           saveRDS(df_grafico_genero,'/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/data/df_grafico_genero.rds')
-          xlsx::write.xlsx(df_estados_raw,'/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/data/historico_estados.xls')
+          xlsx::write.xlsx(df_estados_raw,'/Users/josemiguelavendanoinfante/R/javenda_site/static/data/historico_estados.xls')
+          
+          
         }
         
       }
       
     }
   }
-  rmarkdown::render('/Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/covid_intento.RMD') 
-  file.copy(
-    'covid_intento.html','/Users/josemiguelavendanoinfante/R/javenda_site/static/covid19venezuela.html', 
-    overwrite = TRUE)
-  system('git config user.email "javenda@gmail.com"')
-  system('git config user.name "javendaXgh"')
   
-  #system('git remote add origin /Users/josemiguelavendanoinfante/R/sites/javenda_site/.git')
-  #system('git remote add p.jpeg https://github.com/javendaXgh/javenda_site')
-  #system('git remote add .')
-  system('git add /Users/josemiguelavendanoinfante/R/shiny/app_covid_ven/covid_intento.html')
-  system(paste0('git commit -am "reporte_',Sys.time(),'_"'))
-  #system('git status')
-  
-  #system('git branch -a')
-  #system('git pull https://github.com/javendaXgh/javenda_site master')
-  system('git push https://github.com/javendaXgh/javenda_site master')
   
 }
 
+
 actualizacion()
-
-
-ver <- readRDS('bd/df2/df2_2021-02-02.rds')
-
+#

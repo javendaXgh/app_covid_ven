@@ -8,8 +8,9 @@ output:
     social: [ "twitter",  "menu" ]
     navbar:
       - { title: "home", icon: "fa-home", href: "https://javenda.me/", align: left }
-    
-    
+    includes:
+       in_header: GA_Script.html
+
 ---
 
 
@@ -37,6 +38,26 @@ my_title <- paste0('  Datos COVID 19 Venezuela ',emo::ji("venezuela"),'         
 title: '`r my_title`'
 
 ---
+<!--html_preserve-->
+
+<head>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TZ967Z11S8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-TZ967Z11S8');
+  </script>
+
+
+</head> 
+<!--/html_preserve-->
+
+
+
 
 <script>
 document.querySelector(".navbar-header > span.navbar-brand").innerHTML = "`r my_title`";
@@ -185,7 +206,7 @@ Row
 
 ### Acerca:
 toda la información y datos son obtenidos de la página https://covid19.patria.org.ve/estadisticas-venezuela/ y 
-han sido procesados  y acumulados por José Miguel Avendaño I, sin modificar ni añadir ningún valor adicional.
+han sido procesados  y acumulados por José Miguel Avendaño I, sin modificar ni añadir ningún valor.
 
 Este sitio funciona como complemento y ofrece visualizaciones parecidas o adicionales a las
 ya mostradas en dicha página. No se contempla con los datos contenidos acá realizar
@@ -224,9 +245,9 @@ Row
 ### descarga de los datos
 Si desea descargar los datos con los cuales se generaron estos gráficos usar los enlaces:
 
-https://github.com/javendaXgh/app_covid_ven/raw/main/data/datos_historicos.xls
+https://javenda.me/data/datos_historicos.xls
 
-https://github.com/javendaXgh/app_covid_ven/raw/main/data/historico_estados.xls
+https://javenda.me/data/historico_estados.xls
 
 Los archivos fueron generados con los datos disponibles en la API de covid19.patria.org.ve
 
